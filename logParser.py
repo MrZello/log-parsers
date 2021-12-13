@@ -25,3 +25,26 @@ def logonEvents():
         print(f'EventID: 4624, User: {i}, IP: {events.get(i)}')
 
 logonEvents()
+
+
+
+
+##DIFFERENT WAY USING regex... this is not my work btw.
+##import Evtx.Evtx as evtx
+##import re
+##
+##path = r'c:\users\student\desktop\security.evtx'
+##with evtx.Evtx(path) as log:
+##  cnt = 0
+##  rslts = {}
+##  for r in log.records():
+##    if "4624" in r.xml() and "172." in r.xml():
+##        cnt += 1
+##        ipTemp = re.findall('\<Data\ Name\=\"IpAddress\"\>.*\<\/Data\>',r.xml())
+##        ip = re.findall('\d+\.\d+\.\d+\.\d+',ipTemp[0])
+##        userTemp = re.findall(r'\<Data\ Name\=\"TargetUserName\"\>.*\<\/Data\>',r.xml())
+##        user = re.findall('\>\w+\<',userTemp[0])
+##        rslts[ip[0]] = user[0][1:-1]
+##        if cnt > 10:
+##            break
+print(rslts)
